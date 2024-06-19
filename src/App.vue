@@ -1,20 +1,24 @@
 <script setup>
 import { RouterLink, RouterView } from 'vue-router'
 import HelloWorld from './components/HelloWorld.vue'
+import Select from "./components/global/Select.vue";
 </script>
 
 <template>
-  <header>
-    <img alt="Vue logo" class="logo" src="@/assets/logo.svg" width="125" height="125" />
+  <header class="header header-transparent">
+    <nav class="navbar  fixed-top navbar-light w-100">
+        <div class="container-fluid">
+        <RouterLink to="/">
+          <img alt="TotalCode logo" class="logo" src="@/assets/logo-total.png" width="125" />
+        </RouterLink>
 
-    <div class="wrapper">
-      <HelloWorld msg="You did it!" />
-
-      <nav>
-        <RouterLink to="/">Home</RouterLink>
-        <RouterLink to="/about">About</RouterLink>
-      </nav>
-    </div>
+        <h1 class="title-ppal">ERP - Tienda Rosatel</h1>
+        <div class="wrapper">
+          <RouterLink to="/about">About</RouterLink>
+          <RouterLink to="/" class="btn-left">Salir</RouterLink>
+        </div>
+      </div>
+    </nav>
   </header>
 
   <RouterView />
@@ -32,10 +36,14 @@ header {
 }
 
 nav {
+  background-color: white;
   width: 100%;
   font-size: 12px;
   text-align: center;
   margin-top: 2rem;
+  -webkit-box-shadow: 0px 10px 17px -15px rgba(0,0,0,0.5);
+  -moz-box-shadow: 0px 10px 17px -15px rgba(0,0,0,0.5);
+  box-shadow: 0px 10px 17px -15px rgba(0,0,0,0.5);
 }
 
 nav a.router-link-exact-active {
@@ -75,11 +83,10 @@ nav a:first-of-type {
 
   nav {
     text-align: left;
-    margin-left: -1rem;
     font-size: 1rem;
-
+    margin: 0;
     padding: 1rem 0;
-    margin-top: 1rem;
+    
   }
 }
 </style>
