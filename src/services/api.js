@@ -9,7 +9,7 @@ const api = axios.create({
 })
 
 // Función para establecer el token de autenticación
-export const setAuthToken = token => {
+export const setAuthToken = (token) => {
   if (token) {
     api.defaults.headers.common['Authorization'] = `Bearer ${token}`
   } else {
@@ -18,12 +18,12 @@ export const setAuthToken = token => {
 }
 
 // Peticiones a la API
-export const login = credentials => api.post('/login', credentials)
+export const login = (credentials) => api.post('/login', credentials)
 export const getOrders = () => api.get('/orders')
 export const getMonths = () => api.get('/months')
 export const getStatus = () => api.get('/status')
-export const getOrderStatus = id => api.get(`/orders/status/${id}`)
-export const getOrdersByMonth = month => api.get(`/orders/month/${month}`)
+export const getOrderStatus = (id) => api.get(`/orders/status/${id}`)
+export const getOrdersByMonth = (month) => api.get(`/orders/month/${month}`)
 
 // Exporta la instancia de Axios para su uso en otros archivos
 export default api

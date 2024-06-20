@@ -1,5 +1,13 @@
 import { createStore } from 'vuex'
-import { login, getOrders, getMonths, getStatus, getOrderStatus, getOrdersByMonth, setAuthToken } from '../services/api'
+import {
+  login,
+  getOrders,
+  getMonths,
+  getStatus,
+  getOrderStatus,
+  getOrdersByMonth,
+  setAuthToken
+} from '../services/api'
 
 export default createStore({
   state: {
@@ -103,9 +111,11 @@ export default createStore({
     filterOrders({ commit, state }) {
       let filteredOrders = state.originalOrders.slice()
       if (state.orderStatusFilter !== null) {
-        filteredOrders = filteredOrders.filter(order => Number(order.status) === Number(state.orderStatusFilter))
+        filteredOrders = filteredOrders.filter(
+          (order) => Number(order.status) === Number(state.orderStatusFilter)
+        )
         commit('setOrders', filteredOrders)
-      }else{
+      } else {
         commit('setOrders', state.originalOrders)
       }
     },
@@ -115,12 +125,12 @@ export default createStore({
     }
   },
   getters: {
-    getToken: state => state.token,
-    isAuthenticated: state => !!state.token,
-    getOrders: state => state.orders,
-    getMonths: state => state.months,
-    getStatuses: state => state.statuses,
-    getOrderStatusFilter: state => state.orderStatusFilter,
-    getError: state => state.error
+    getToken: (state) => state.token,
+    isAuthenticated: (state) => !!state.token,
+    getOrders: (state) => state.orders,
+    getMonths: (state) => state.months,
+    getStatuses: (state) => state.statuses,
+    getOrderStatusFilter: (state) => state.orderStatusFilter,
+    getError: (state) => state.error
   }
 })

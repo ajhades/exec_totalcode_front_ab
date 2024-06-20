@@ -10,7 +10,7 @@
         <input type="password" v-model="password" id="password" class="form-control" required />
         <label for="password">Contraseña:</label>
       </div>
-      <button type="submit"  class="btn btn-primary w-100 py-2">Iniciar sesión</button>
+      <button type="submit" class="btn btn-primary w-100 py-2">Iniciar sesión</button>
     </form>
     <p v-if="error">{{ error }}</p>
   </div>
@@ -42,7 +42,7 @@ export default {
         })
         const token = response.data.token
         this.saveToken(token)
-        this.$router.push({ name: 'about' });
+        this.$router.push({ name: 'about' })
       } catch (error) {
         this.error = 'Login failed. Please check your credentials.'
       }
@@ -51,5 +51,4 @@ export default {
 }
 </script>
 
-<style>
-</style>
+<style></style>

@@ -12,10 +12,6 @@
 <script>
 export default {
   props: ['options', 'label'],
-  setup(props) {
-    // setup() receives props as the first argument.
-    console.log('options', props)
-  },
   data() {
     return {
       selected: ''
@@ -23,7 +19,7 @@ export default {
   },
   created() {},
   methods: {
-    onHandleChange(){
+    onHandleChange() {
       this.$emit('v-selected', this.selected)
     }
   }
@@ -31,10 +27,10 @@ export default {
 </script>
 
 <style>
-.dynamic-select{
+.dynamic-select {
   min-width: 250px;
 }
-.dynamic-select select{
-  border-color:#8753fe;
+.dynamic-select select {
+  border-color: #8753fe;
 }
 </style>
