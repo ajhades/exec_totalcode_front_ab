@@ -80,9 +80,6 @@ export default {
 .filter{
   max-width: 100px;
 }
-.about .table{
-
-}
 .about .table thead{
   text-transform: uppercase;
 }

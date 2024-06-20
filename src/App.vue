@@ -1,7 +1,13 @@
-<script setup>
+<script>
 import { RouterLink, RouterView } from 'vue-router'
-import HelloWorld from './components/HelloWorld.vue'
-import Select from "./components/global/Select.vue";
+import { mapGetters } from 'vuex'
+
+export default {
+  name: 'Navigation',
+  computed: {
+    ...mapGetters(['isAuthenticated'])
+  }
+}
 </script>
 
 <template>
@@ -12,10 +18,9 @@ import Select from "./components/global/Select.vue";
           <img alt="TotalCode logo" class="logo" src="@/assets/logo-total.png" width="125" />
         </RouterLink>
 
-        <h1 class="title-ppal">ERP - Tienda Rosatel</h1>
+        <h1 class="primary-color text-uppercase fs-4">ERP - Tienda Rosatel</h1>
         <div class="wrapper">
-          <RouterLink to="/about">About</RouterLink>
-          <RouterLink to="/" class="btn-left">Salir</RouterLink>
+          <RouterLink to="/" class="btn-left" v-show="isAuthenticated">Salir <img src="@/assets/ico-power.svg" alt="ico-power" width="20"></RouterLink>
         </div>
       </div>
     </nav>

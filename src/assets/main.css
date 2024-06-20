@@ -25,6 +25,17 @@ a,
   color:#fff;
 }
 
+.navbar .wrapper a,
+.navbar .wrapper a.router-link-active{
+  color:grey;
+  text-decoration: none;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.navbar .wrapper a img{
+  filter: contrast(0);
+}
+
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);

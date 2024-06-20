@@ -2,15 +2,15 @@
   <div>
     <h1>Login</h1>
     <form @submit.prevent="login">
-      <div>
-        <label for="username">Username:</label>
-        <input type="text" v-model="username" id="username" required />
+      <div class="form-floating">
+        <input type="text" v-model="username" id="username" class="form-control" required />
+        <label for="username">Usuario:</label>
       </div>
-      <div>
-        <label for="password">Password:</label>
-        <input type="password" v-model="password" id="password" required />
+      <div class="form-floating">
+        <input type="password" v-model="password" id="password" class="form-control" required />
+        <label for="password">Contraseña:</label>
       </div>
-      <button type="submit">Login</button>
+      <button type="submit"  class="btn btn-primary w-100 py-2">Iniciar sesión</button>
     </form>
     <p v-if="error">{{ error }}</p>
   </div>

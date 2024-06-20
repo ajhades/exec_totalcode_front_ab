@@ -1,6 +1,12 @@
 <template>
   <main>
-    <Login />
+    <div class="container-fluid">
+      <div class="row">
+        <div class="col-4 m-auto">
+          <Login />
+        </div>
+      </div>
+    </div>
   </main>
 </template>
 <script>
@@ -17,5 +23,6 @@ export default {
 <style>
 main {
   margin-top: 100px;
+  min-height: 100vh;
 }
 </style>
