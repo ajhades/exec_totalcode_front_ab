@@ -1,29 +1,36 @@
 <template>
-  <select v-model="selected" @change="set_select()">
-    <option v-for="option in options" :value="option.id">
-      {{ option.intitule }}
-    </option>
-  </select>
-  <div>Selected: {{ selected }}</div>
+  <div class="dynamic-select d-inline-flex align-items-center flex-row">
+    <label class="mx-3 primary-color">{{ label }}:</label>
+    <select v-model="selected" class="form-select">
+      <option v-for="option in options" :value="option.id">
+        {{ option.name }}
+      </option>
+    </select>
+  </div>
 </template>
 
-<script setup>
-import { ref, reactive, onMounted } from 'vue'
-const selected = ref(57)
-const options = ref([
-  { id: 53, intitule: 'foo' },
-  { id: 55, intitule: 'footoo' },
-  { id: 56, intitule: 'doodoo' },
-  { id: 54, intitule: 'barbaz' },
-  { id: 57, intitule: 'barbars' }
-])
-const form = reactive({
-  cat: ''
-})
-onMounted(() => {
-  set_select()
-})
-const set_select = () => {
-  form.cat = selected.value
+<script>
+export default {
+  props: ['options', 'label'],
+  setup(props) {
+    // setup() receives props as the first argument.
+    console.log('options', props)
+  },
+  data() {
+    return {
+      selected: ''
+    }
+  },
+  created() {},
+  methods: {}
 }
 </script>
+
+<style>
+.dynamic-select{
+  min-width: 250px;
+}
+.dynamic-select select{
+  border-color:#8753fe;
+}
+</style>

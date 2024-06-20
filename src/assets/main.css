@@ -17,6 +17,14 @@ a,
   padding: 3px;
 }
 
+.primary-color{
+  color: #8753fe;
+}
+.bg-primary-color{
+  background-color: #8753fe;
+  color:#fff;
+}
+
 @media (hover: hover) {
   a:hover {
     background-color: hsla(160, 100%, 37%, 0.2);
