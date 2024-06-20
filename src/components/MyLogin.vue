@@ -42,7 +42,7 @@ export default {
         })
         const token = response.data.token
         this.saveToken(token)
-        this.$router.push({ name: 'about' })
+        this.$router.push({ name: 'orders' })
       } catch (error) {
         this.error = 'Login failed. Please check your credentials.'
       }

@@ -1,5 +1,5 @@
 <template>
-  <section class="about">
+  <section class="orders">
     <div class="container">
       <div class="row">
         <div class="card col-md-8 m-auto p-5">
@@ -76,26 +76,26 @@ export default {
 }
 </script>
 <style>
-.about {
+.orders {
   margin-top: 88px;
 }
 .filter {
   max-width: 100px;
 }
-.about .table thead {
+.orders .table thead {
   text-transform: uppercase;
 }
-.about .table > :not(caption) > * > * {
+.orders .table > :not(caption) > * > * {
   background-color: transparent;
 }
 @media screen and (max-width: 1024px) {
-  .about {
+  .orders {
     margin-top: 100px;
   }
 }
 
 @media (min-width: 1024px) {
-  .about {
+  .orders {
     min-height: 100vh;
     display: flex;
     align-items: center;
