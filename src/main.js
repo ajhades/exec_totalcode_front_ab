@@ -5,8 +5,8 @@ import App from './App.vue'
 import router from './router'
 import store from './store'
 import axios from 'axios'
-import select from '@/components/global/Select.vue'
-import Login from '@/components/Login.vue'
+import select from '@/components/global/SelectFilter.vue'
+import MyLogin from '@/components/MyLogin.vue'
 import TableOrders from '@/components/TableOrders.vue'
 import 'bootstrap/dist/css/bootstrap.min.css'
 import 'bootstrap'
@@ -16,7 +16,7 @@ const app = createApp(App)
 app.use(router)
 app.use(store)
 app.component('v-select', select)
-app.component('Login', Login)
+app.component('MyLogin', MyLogin)
 app.component('TableOrders', TableOrders)
 
 app.config.globalProperties.$filters = {

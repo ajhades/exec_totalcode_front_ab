@@ -8,7 +8,7 @@
       </tr>
     </thead>
     <tbody>
-      <tr v-for="order in orders">
+      <tr v-for="order in orders" :key="order.order_num">
         <td>
           <div class="user_table">
             <p class="m-0">

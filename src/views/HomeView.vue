@@ -3,7 +3,7 @@
     <div class="container-fluid">
       <div class="row">
         <div class="col-4 m-auto">
-          <Login />
+          <MyLogin />
         </div>
       </div>
     </div>
