@@ -5,8 +5,10 @@ export default createStore({
   state: {
     token: '',
     orders: [],
+    originalOrders: [],
     months: [],
     statuses: [],
+    orderStatusFilter: null,
     error: ''
   },
   mutations: {
@@ -19,11 +21,17 @@ export default createStore({
     setOrders(state, orders) {
       state.orders = orders
     },
+    setOriginalOrders(state, orders) {
+      state.originalOrders = orders
+    },
     setMonths(state, months) {
       state.months = months
     },
     setStatuses(state, statuses) {
       state.statuses = statuses
+    },
+    setOrderStatusFilter(state, status) {
+      state.orderStatusFilter = status
     },
     setError(state, error) {
       state.error = error
@@ -50,6 +58,7 @@ export default createStore({
         }
         const response = await getOrders()
         commit('setOrders', response.data)
+        commit('setOriginalOrders', response.data)
       } catch (error) {
         commit('setError', 'Failed to fetch orders.')
       }
@@ -74,6 +83,7 @@ export default createStore({
       try {
         const response = await getOrderStatus(id)
         commit('setOrders', response.data)
+        commit('setOriginalOrders', response.data)
       } catch (error) {
         commit('setError', `Failed to fetch status for order ${id}.`)
       }
@@ -82,8 +92,21 @@ export default createStore({
       try {
         const response = await getOrdersByMonth(month)
         commit('setOrders', response.data)
+        commit('setOriginalOrders', response.data)
       } catch (error) {
         commit('setError', `Failed to fetch orders for month ${month}.`)
+      }
+    },
+    setOrderStatusFilter({ commit }, status) {
+      commit('setOrderStatusFilter', status)
+    },
+    filterOrders({ commit, state }) {
+      let filteredOrders = state.originalOrders.slice()
+      if (state.orderStatusFilter !== null) {
+        filteredOrders = filteredOrders.filter(order => Number(order.status) === Number(state.orderStatusFilter))
+        commit('setOrders', filteredOrders)
+      }else{
+        commit('setOrders', state.originalOrders)
       }
     },
     logout({ commit }) {
@@ -97,6 +120,7 @@ export default createStore({
     getOrders: state => state.orders,
     getMonths: state => state.months,
     getStatuses: state => state.statuses,
+    getOrderStatusFilter: state => state.orderStatusFilter,
     getError: state => state.error
   }
 })

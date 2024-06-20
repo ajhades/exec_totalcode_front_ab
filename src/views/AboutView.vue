@@ -22,7 +22,7 @@
               <tr v-for="order in getOrders">
                 <td>
                   <div class="user_table">
-                    <p class="m-0">{{ order.first_name }} {{order.last_name}}</p>
+                    <p class="m-0"><strong>{{ order.first_name }} {{order.last_name}}</strong></p>
                     <span class="fs-6">{{order.email}}</span>
                   </div>
                 </td>
@@ -58,13 +58,14 @@ export default {
   },
   created() {},
   methods: {
-    ...mapActions(['fetchMonths', 'fetchStatuses', 'fetchOrders', 'fetchOrdersByMonth', 'fetchOrderStatus']),
+    ...mapActions(['fetchMonths', 'fetchStatuses', 'fetchOrders', 'fetchOrdersByMonth', 'setOrderStatusFilter', 'filterOrders']),
     onSelectedMonth(monthID){
       this.fetchOrdersByMonth(monthID);
       this.month = monthID;
     },
     onSelectedStatus(statusID){
-      this.fetchOrderStatus(statusID);
+      this.setOrderStatusFilter(statusID);
+      this.filterOrders();
       this.status = statusID;
     },
     totalOrders(){
