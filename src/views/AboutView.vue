@@ -6,9 +6,9 @@
           <h3 class="text-start fs-4">Clientes que han ordenado en la tienda</h3>
           <div class="d-inline-flex flex-wrap justify-content-start align-items-center my-4">
             <span class="d-inline filter text-start">Filtros:</span>
-            <v-select :options="options" label="Mes"></v-select>
-            <v-select :options="options" label="Estado"></v-select>
-            <span class="ms-auto p-2">Registros (<strong>{{ orders.length }}</strong>)</span>
+            <v-select @v-selected="onSelectedMonth" :options="getMonths" label="Mes"></v-select>
+            <v-select @v-selected="onSelectedStatus" :options="getStatuses" label="Estado"></v-select>
+            <span class="ms-auto p-2">Registros (<strong>{{ getOrders.length }}</strong>)</span>
           </div>
           <table class="table table-hover ">
             <thead class="bg-primary-color table-dark">
@@ -19,7 +19,7 @@
               </tr>
             </thead>
             <tbody>
-              <tr v-for="order in orders">
+              <tr v-for="order in getOrders">
                 <td>
                   <div class="user_table">
                     <p class="m-0">{{ order.first_name }} {{order.last_name}}</p>
@@ -34,7 +34,7 @@
               <tr>
                 <td class="text-end text-uppercase pe-5">Total</td>
                 <td>{{ totalOrders() }}</td>
-                <td>{{$filters.currencyCOP(23050400)}}</td>
+                <td>{{$filters.currencyCOP(totalValue())}}</td>
               </tr>
             </tfoot>
           </table>
@@ -44,32 +44,46 @@
   </section>
 </template>
 <script>
+import { mapActions, mapGetters } from 'vuex'
 export default {
+  computed: {
+    ...mapGetters(['getError', 'getMonths', 'getStatuses', 'getOrders']),
+  },
   data() {
     return {
-      options: [
-        { id: 53, name: 'foo' },
-        { id: 55, name: 'footoo' },
-        { id: 56, name: 'doodoo' },
-        { id: 54, name: 'barbaz' },
-        { id: 57, name: 'barbars' }
-      ],
-      orders: [
-        {first_name: 'ALEJANDRO', last_name: 'RECIO', email: 'alejandrors87@gmail.com', total: '109900.00', ordered_quantity: '2.00'},
-        {first_name: 'CARMENZA', last_name: 'GARCIA', email: 'clodas@gmail.com', total: '72400.00', ordered_quantity: '1.00'},
-        {first_name: 'DIEGO', last_name: 'REINOSO', email: 'dreinoso@totalcode.com', total: '109900.00', ordered_quantity: '1.00'},
-        {first_name: 'SANDRA', last_name: 'MARQUEZ', email: 'sandramarquezsvc@gmail.com', total: '281300', ordered_quantity: '3.00'},
-      ]
+      month: 0,
+      status:0,
+      orders:[]
     }
   },
   created() {},
   methods: {
+    ...mapActions(['fetchMonths', 'fetchStatuses', 'fetchOrders', 'fetchOrdersByMonth', 'fetchOrderStatus']),
+    onSelectedMonth(monthID){
+      this.fetchOrdersByMonth(monthID);
+      this.month = monthID;
+    },
+    onSelectedStatus(statusID){
+      this.fetchOrderStatus(statusID);
+      this.status = statusID;
+    },
     totalOrders(){
-      let sum =  this.orders.reduce((s,f) => {
+      let sum =  this.getOrders.reduce((s,f) => {
         return parseInt(s) + parseInt(f.ordered_quantity)
       },0)
       return sum;
-    }
+    },
+    totalValue(){
+      let sum =  this.getOrders.reduce((s,f) => {
+        return parseInt(s) + parseInt(f.total)
+      },0)
+      return sum;
+    },
+  },
+  mounted() {
+    this.fetchMonths()
+    this.fetchStatuses()
+    this.fetchOrders()
   }
 }
 </script>

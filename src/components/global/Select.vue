@@ -1,8 +1,8 @@
 <template>
   <div class="dynamic-select d-inline-flex align-items-center flex-row">
     <label class="mx-3 primary-color">{{ label }}:</label>
-    <select v-model="selected" class="form-select">
-      <option v-for="option in options" :value="option.id">
+    <select v-model="selected" class="form-select" @change="onHandleChange">
+      <option v-for="option in options" :key="option.id" :value="option.id">
         {{ option.name }}
       </option>
     </select>
@@ -22,7 +22,11 @@ export default {
     }
   },
   created() {},
-  methods: {}
+  methods: {
+    onHandleChange(){
+      this.$emit('v-selected', this.selected)
+    }
+  }
 }
 </script>
 
