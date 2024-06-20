@@ -1,7 +1,7 @@
 # Ejercicio FullStack
 ## _Tienda Rosatel_
 
-Implementación de cliente FrontEnd para consumir BackEnd en PHP.
+Implementación de cliente FrontEnd para consumir BackEnd en PHP: [Ejercicio totalcode](https://github.com/ajhades/exec_totalcode_ab).
 
 > Nota: Las credenciales de ejemplo son: ``admin:password``
 
