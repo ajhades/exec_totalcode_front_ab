@@ -1,6 +1,9 @@
-# exec_totalcode_front_ab
+# Ejercicio FullStack
+## _Tienda Rosatel_
 
-This template should help get you started developing with Vue 3 in Vite.
+Implementación de cliente FrontEnd para consumir BackEnd en PHP.
+
+> Nota: Las credenciales de ejemplo son: ``admin:password``
 
 ## Recommended IDE Setup
 
