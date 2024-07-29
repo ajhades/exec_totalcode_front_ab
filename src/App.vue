@@ -15,12 +15,12 @@ export default {
     <nav class="navbar  fixed-top navbar-light w-100">
         <div class="container-fluid">
         <RouterLink to="/">
-          <img alt="TotalCode logo" class="logo" src="@/assets/logo-total.png" width="125" />
+          <img alt="TotalCode logo" class="logo" src="@/assets/images/logo-total.png" width="125" />
         </RouterLink>
 
         <h1 class="primary-color text-uppercase fs-4">ERP - Tienda Rosatel</h1>
         <div class="wrapper">
-          <RouterLink to="/" class="btn-left" v-show="isAuthenticated">Salir <img src="@/assets/ico-power.svg" alt="ico-power" width="20"></RouterLink>
+          <RouterLink to="/" class="btn-left" v-show="isAuthenticated">Salir <img src="@/assets/images/ico-power.svg" alt="ico-power" width="20"></RouterLink>
         </div>
       </div>
     </nav>
